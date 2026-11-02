@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="High Council: a Claude skill for adversarial multi-lens decision deliberation and unknown-unknowns scanning.">
 <title>High Council</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -252,6 +258,8 @@ footer p + p{margin-top:6px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
+</head>
+<body>
 
 <div class="wrap">
 
@@ -391,6 +399,7 @@ footer p + p{margin-top:6px}
     <div class="step"><span class="n">STEP 4 · ENFORCEMENT</span><h3>Quality gates, bounded</h3><p>Dissent quota, novelty gate, a counterfactual probe at >70% agreement, an evidence-monoculture check and anti-recursion. Each fires at most once.</p></div>
     <div class="step"><span class="n">STEP 5 · ROUND 3</span><h3>Stance and pre-mortem</h3><p>Each member pre-mortems their own option, then casts a machine-readable stance with confidence and a dealbreaker flag. Missing lines are re-prompted, never inferred.</p></div>
     <div class="step"><span class="n">STEP 6 · VERDICT</span><h3>Chairman writes, files are saved</h3><p>A non-deliberating Chairman reads the de-anonymised transcript and writes the 13-section verdict. Report and transcript are written to disk.</p></div>
+    <div class="step" style="background:var(--raised)"><span class="n">AFTERWARDS · YOU</span><h3>Watch the kill criteria</h3><p>If an early signal fires, the verdict is invalid and its named fallback applies. The transcript feeds the next council, so settled questions aren't argued twice.</p></div>
   </div>
 </section>
 
@@ -622,8 +631,8 @@ for(let i=0;i<36;i++){const a=i*Math.PI/18;el("line",{x1:cx+Math.cos(a)*150,y1:c
 const linesG=el("g",{},svg);
 // chairman
 const ch=el("g",{},svg);
-el("circle",{cx,cy,r:46,fill:"var(--raised)",stroke:"var(--ink)","stroke-width":1.5},ch);
-el("circle",{cx,cy,r:40,fill:"none",stroke:"var(--brass)","stroke-width":.8},ch);
+el("circle",{cx,cy,r:56,fill:"var(--raised)",stroke:"var(--ink)","stroke-width":1.5},ch);
+el("circle",{cx,cy,r:50,fill:"none",stroke:"var(--brass)","stroke-width":.8},ch);
 const t1=el("text",{x:cx,y:cy-2,"text-anchor":"middle","font-family":"Bodoni Moda, Georgia, serif","font-size":16,"font-weight":700,fill:"var(--ink)"},ch);t1.textContent="Chairman";
 const t2=el("text",{x:cx,y:cy+15,"text-anchor":"middle","font-family":"IBM Plex Mono, monospace","font-size":8.5,fill:"var(--muted)","letter-spacing":"1"},ch);t2.textContent="DOES NOT VOTE";
 const seats=[];
@@ -644,7 +653,7 @@ function drawLines(){
   linesG.innerHTML="";
   M.forEach((m,i)=>{ if(PRESETS[preset].includes(m.k)){
     const dx=m.x-cx,dy=m.y-cy,d=Math.hypot(dx,dy);
-    el("line",{x1:cx+dx/d*48,y1:cy+dy/d*48,x2:m.x-dx/d*34,y2:m.y-dy/d*34,stroke:cssv(m.c),"stroke-width":1.2,"stroke-dasharray":"3 4",opacity:.8},linesG);
+    el("line",{x1:cx+dx/d*58,y1:cy+dy/d*58,x2:m.x-dx/d*34,y2:m.y-dy/d*34,stroke:cssv(m.c),"stroke-width":1.2,"stroke-dasharray":"3 4",opacity:.8},linesG);
   }});
 }
 function select(i){
@@ -810,3 +819,5 @@ document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",()=>{
 }));
 })();
 </script>
+</body>
+</html>
